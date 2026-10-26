@@ -98,11 +98,11 @@ export default function PersonaFlowPages({page, entry, debug, onHotspot, onLoad}
     </section></div>}
     <main className="standard-conversation-main"><div className="standard-chat-messages">
       <div className="standard-chat-time">今天 · 对话仅在当前设备保存</div>
-      <div className="standard-chat-incoming"><b>{person.name}</b><span>{incomingQuestion}</span></div>
+      <div className="standard-chat-incoming"><b>{person.name}</b><span>{incomingQuestion}</span><small className="incoming-source">本人确认</small></div>
       {faqMatch&&!alreadyAnswered&&<div className="faq-approval">
         <small>我的拟回复 · 问答库 · 尚未发送</small>
         <p>{faqMatch.a}</p>
-        <div><button type="button" className="faq-approval-confirm" onClick={confirmFaq}>本人确认</button></div>
+        <div><button type="button" className="faq-approval-confirm" onClick={confirmFaq}>确认发送</button></div>
       </div>}
       {!faqMatch&&<p className="faq-no-match">问答库未覆盖此问题，请本人回复。</p>}
       {messages.map((message,index)=><div className="chat-sent" key={`${message.text}-${index}`}><div className="standard-chat-outgoing">{message.text}</div><small>{message.source==='faq-confirmed'?'本人确认 · 问答库回复':'本人回复'}</small></div>)}
