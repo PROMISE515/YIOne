@@ -4,7 +4,7 @@
 
 纯前端模式不使用服务端和数据库。原型功能在当前浏览器运行。浏览器本地数据不会在设备之间同步。
 
-产品架构与验收边界见 [docs/architecture.md](docs/architecture.md)。原型来源位于 `/Users/honk/Desktop/最近项目/yione/yione-route-workbench`。
+项目保留 48 页交互原型，并使用浏览器本地状态运行。
 
 ## 本地预览
 
@@ -19,9 +19,15 @@ npm run dev
 
 运行 `npm run build:pages` 生成纯前端的 `dist/` 文件夹。
 
-仓库中的 `.github/workflows/pages.yml` 会在默认分支更新后自动发布。
+私有源码仓库是 [PROMISE515/YIOne](https://github.com/PROMISE515/YIOne)。
 
-首次发布时，在 GitHub 仓库的 Settings → Pages 中选择 GitHub Actions 作为来源。
+公开部署仓库是 [PROMISE515/YIOne-pages](https://github.com/PROMISE515/YIOne-pages)。
+
+网站地址是 <https://promise515.github.io/YIOne-pages/>。
+
+源码仓库的工作流会构建并保存网页文件。更新网站时，需要将构建文件同步到公开部署仓库。
+
+公开部署仓库的 Pages 来源为 `main` 分支根目录。
 
 构建会按仓库名称设置资源路径。`404.html` 用于恢复页面直达链接。
 
