@@ -15,16 +15,6 @@
     "sha256": "86651444291d74a29879494fbbe2a7f4fced2c19ccaca724d69d3f7123e230c5"
   },
   {
-    "id": "N42",
-    "file": "N42-他人主页.png",
-    "sha256": "e08a2d70ea2492dbc7e2cd5985193d7f954565fe8d353ffdcf32ee7d881492a6"
-  },
-  {
-    "id": "N37",
-    "file": "N37-分身交流.png",
-    "sha256": "ea734493d97792da5c66a5bc7181127b09c02aef71e70073a877c5a0c113602e"
-  },
-  {
     "id": "N53",
     "file": "N53-找合作.png",
     "sha256": "69f8d82eeaf9c2cd0d73c5999673dd1bee221fdb53b48bc3a29d922c5bf13b21"
@@ -43,11 +33,6 @@
     "id": "N36",
     "file": "N36-消息进行中.png",
     "sha256": "8eb41a34c2ca203d1448ee245316262725ac0ad28501b270eeee1f7624a99a29"
-  },
-  {
-    "id": "N33",
-    "file": "N33-创建任务.png",
-    "sha256": "ac4e082cb110dee62e7f5163ec24a65270b6c227b563f98714893ce929d7a74f"
   },
   {
     "id": "N27",

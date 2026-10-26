@@ -18,7 +18,7 @@ import './style.css';
 import './ui-system.css';
 const appBase=import.meta.env.BASE_URL;
 const prototypePath=id=>`${appBase}prototype/${id}`;
-const workbenchPageIds=new Set(['N34','A01','N27','N28','N31','N32','N33','N35','N36','N38','G01','G03','G04']);
+const workbenchPageIds=new Set(['N34','A01','N27','N28','N31','N32','N35','N36','N38','G01','G03','G04']);
 function App(){
  const [config,setConfig]=useState(null),[error,setError]=useState(''),[location,setLocation]=useState(window.location.pathname+window.location.search),[entry,setEntry]=useState(history.state),[message,setMessage]=useState(''),[copy,setCopy]=useState(false);const restore=useRef(null), positions=useRef(new Map()), changing=useRef(false), phoneScroll=useRef(null);
  const debug=new URLSearchParams(location.split('?')[1]).get('debug')==='1';
@@ -27,12 +27,12 @@ function App(){
  function recordScroll(){if(history.state?.prototype&&!changing.current){const y=phoneScroll.current?.scrollTop||0;positions.current.set(history.state.key,y);history.replaceState({...history.state,scroll:y},'');}}
  function navigate(id,reset=false,context={},replace=false){if(!reset&&!replace&&id===pageFromPath(window.location.pathname))return;const y=phoneScroll.current?.scrollTop||0;positions.current.set(history.state?.key,y);history.replaceState({...history.state,scroll:y},'');changing.current=true;restore.current=0;const previous=history.state;const e=reset?initialEntry(id):replace?{...initialEntry(id),trail:[...(previous?.trail||[]).slice(0,-1),id],depth:previous?.depth||0,context}:nextEntry(previous,id,context);history[replace?'replaceState':'pushState'](e,'',`${prototypePath(id)}${debug?'?debug=1':''}`);setEntry(e);setLocation(window.location.pathname+window.location.search);setMessage('');phoneScroll.current?.scrollTo(0,0);setTimeout(()=>{changing.current=false;},100);}
  const page=config?.pages.find(p=>p.id===pageFromPath(location.split('?')[0]));
- const h5Ids=['N68','N46','N34','N35','N36','N42','N37','N53','N54'];
+ const h5Ids=['N68','N46','N34','N35','N36','N53','N54'];
  const callIds=['N51','N52'];
  const groupIds=['N47','G01','G04'];
  const postIds=['N07','N15','N19'];
  const personaFlowIds=['G02','G03','G05'];
- const structureIds=['A01','N33','N27','N28','N31','N32','N38','N56','N41','N50'];
+ const structureIds=['A01','N27','N28','N31','N32','N38','N56','N41','N50'];
  const sidebarIds=['N18','N01','N05','N12','S01','N02','N14','N17','N16','N22','N04','N06','N13','N08','N11','N09'];
  const Viewer=page?.id==='N57'?PostDetailPage:page?.id==='B01'?BubbleSettings:h5Ids.includes(page?.id)?H5Pages:callIds.includes(page?.id)?CallPages:groupIds.includes(page?.id)?GroupChatPages:postIds.includes(page?.id)?PostComposerPages:personaFlowIds.includes(page?.id)?PersonaFlowPages:structureIds.includes(page?.id)?StructurePages:sidebarIds.includes(page?.id)?SidebarSettingsPages:PrototypeViewer;
  function click(h){const action=resolveHotspot(h);if(!action){if(debug)setMessage(`目标待确认：${h.label}。${h.reason}`);return;}if(action.action==='local')return;if(h.historyMode==='return-to-workbench'){const plan=planReturnToWorkbench(history.state);if(plan.mode==='back')history.go(-plan.steps);else navigate(plan.page,false,{},true);return;}if(action.action==='back'){if(['N35','N36'].includes(page.id)){const steps=stepsBackTo(history.state,'N34');if(steps>0)history.go(-steps);else navigate('N34',true,{},true);}else if(history.state?.depth>0)history.back();else navigate(page.back?.fallback||config.startPage,true);}else navigate(action.target,false,h.context||{},h.historyMode==='replace');}

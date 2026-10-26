@@ -512,151 +512,6 @@
       "notes": "最新助手工作区原型中的分身管理首页"
     },
     {
-      "id": "N42",
-      "name": "他人主页",
-      "type": "persona",
-      "image": "/prototype/N42-他人主页.png",
-      "width": 1206,
-      "height": 2622,
-      "hotspots": [
-        {
-          "id": "back",
-          "label": "返回",
-          "x": 55,
-          "y": 170,
-          "width": 100,
-          "height": 95,
-          "action": "back",
-          "target": null,
-          "status": "confirmed",
-          "reason": "",
-          "evidence": "网页原型播放器返回规则；不构成人物链路"
-        },
-        {
-          "id": "follow",
-          "label": "关注",
-          "x": 70,
-          "y": 1430,
-          "width": 250,
-          "height": 130,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        },
-        {
-          "id": "wechat",
-          "label": "微信",
-          "x": 350,
-          "y": 1430,
-          "width": 260,
-          "height": 130,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        },
-        {
-          "id": "more",
-          "label": "更多",
-          "x": 1020,
-          "y": 1425,
-          "width": 110,
-          "height": 130,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        },
-        {
-          "id": "all",
-          "label": "全部动态",
-          "x": 980,
-          "y": 1640,
-          "width": 155,
-          "height": 95,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        },
-        {
-          "id": "avatar",
-          "label": "头像快捷入口",
-          "x": 1010,
-          "y": 2010,
-          "width": 155,
-          "height": 160,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        }
-      ],
-      "back": {
-        "fallback": "N68"
-      },
-      "context": {},
-      "notes": "仅URL独立查看，不接入人物链路"
-    },
-    {
-      "id": "N37",
-      "name": "分身交流",
-      "type": "persona",
-      "image": "/prototype/N37-分身交流.png",
-      "width": 1206,
-      "height": 2622,
-      "hotspots": [
-        {
-          "id": "back",
-          "label": "返回",
-          "x": 55,
-          "y": 170,
-          "width": 100,
-          "height": 95,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        },
-        {
-          "id": "input",
-          "label": "输入消息",
-          "x": 60,
-          "y": 2370,
-          "width": 920,
-          "height": 175,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        },
-        {
-          "id": "send",
-          "label": "发送",
-          "x": 1010,
-          "y": 2370,
-          "width": 140,
-          "height": 175,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "目标与业务规则待确认",
-          "evidence": "原图可见入口；本批未批准行为"
-        }
-      ],
-      "back": null,
-      "context": {},
-      "notes": "仅URL独立查看，不接入人物链路"
-    },
-    {
       "id": "N53",
       "name": "找合作",
       "type": "home",
@@ -1411,112 +1266,6 @@
       },
       "context": {},
       "notes": "群聊列表；展示现有群成员和最新消息。"
-    },
-    {
-      "id": "N33",
-      "name": "创建任务",
-      "type": "task",
-      "image": "/prototype/N33-创建任务.png",
-      "width": 1206,
-      "height": 2622,
-      "hotspots": [
-        {
-          "id": "back",
-          "label": "返回",
-          "x": 50,
-          "y": 150,
-          "width": 110,
-          "height": 110,
-          "action": "back",
-          "target": null,
-          "status": "confirmed",
-          "reason": "",
-          "evidence": "结构批次批准；无来源回 N34"
-        },
-        {
-          "id": "collapse",
-          "label": "收起",
-          "x": 980,
-          "y": 1460,
-          "width": 130,
-          "height": 100,
-          "action": "back",
-          "target": null,
-          "status": "confirmed",
-          "reason": "",
-          "evidence": "结构批次批准；无来源回 N34"
-        },
-        {
-          "id": "voice",
-          "label": "语音输入",
-          "x": 80,
-          "y": 2090,
-          "width": 140,
-          "height": 130,
-          "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "语音执行规则待确认",
-          "evidence": "N图可见入口"
-        },
-        {
-          "id": "send",
-          "label": "发送任务",
-          "x": 880,
-          "y": 2050,
-          "width": 230,
-          "height": 150,
-          "action": "navigate",
-          "target": "N27",
-          "status": "confirmed",
-          "reason": "",
-          "evidence": "本地H5演示任务保存后进入任务管理；不执行任务"
-        },
-        {
-          "id": "manage",
-          "label": "分身管理",
-          "x": 120,
-          "y": 2310,
-          "width": 230,
-          "height": 200,
-          "action": "navigate",
-          "target": "N32",
-          "status": "confirmed",
-          "reason": "",
-          "evidence": "与 N34 同一全局工具栏，接入已实现结构页面"
-        },
-        {
-          "id": "schedule",
-          "label": "任务管理",
-          "x": 490,
-          "y": 2310,
-          "width": 230,
-          "height": 200,
-          "action": "navigate",
-          "target": "N27",
-          "status": "confirmed",
-          "reason": "",
-          "evidence": "与 N34 同一全局工具栏，接入已实现结构页面"
-        },
-        {
-          "id": "messages",
-          "label": "消息中心",
-          "x": 850,
-          "y": 2310,
-          "width": 230,
-          "height": 200,
-          "action": "navigate",
-          "target": "N35",
-          "status": "confirmed",
-          "reason": "",
-          "evidence": "与 N34 同一全局工具栏，接入已实现结构页面"
-        }
-      ],
-      "back": {
-        "fallback": "N34"
-      },
-      "context": {},
-      "notes": "创建任务壳；发送和语音不执行业务"
     },
     {
       "id": "N27",
@@ -4337,7 +4086,7 @@
       "height": 2622,
       "type": "persona",
       "context": {},
-      "notes": "H5扩展页；不对应新的N图，不冒充N42或N37既有人物链路。",
+      "notes": "H5扩展页；原型截图仅作视觉参考。",
       "back": {
         "fallback": "N46"
       },
@@ -4443,7 +4192,7 @@
       "height": 2622,
       "type": "persona",
       "context": {},
-      "notes": "H5扩展页；不对应新的N图，不冒充N42或N37既有人物链路。",
+      "notes": "H5扩展页；原型截图仅作视觉参考。",
       "back": {
         "fallback": "N46"
       },

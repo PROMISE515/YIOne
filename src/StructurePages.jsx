@@ -3,7 +3,7 @@ import {IOSStatusBar, MiniProgramCapsule, MoreDotsIcon, PersonaAvatar} from './P
 import './cooperation-sheet.css';
 import {readDemoPost} from './PostComposerPages.jsx';
 import {certificationText, personas} from './personas.js';
-import {readDemoTask, writeDemoTask} from './taskState.js';
+import {readDemoTask} from './taskState.js';
 import {formatTaskSchedule, readCustomTasks, readTaskSchedules, stageWorkbenchTask, WEEKDAYS, writeCustomTasks, writeTaskSchedules} from './scheduledTasks.js';
 import {readFriendLinks, readFriendVisibility, writeFriendLinks} from './friendLinks.js';
 import './persona-flow.css';
@@ -50,7 +50,6 @@ export default function StructurePages({page, entry, debug, onHotspot, onLoad}) 
   const [debugWechatOpen,setDebugWechatOpen]=useState(false);
   const [personaBio,setPersonaBio]=useState(()=>localStorage.getItem('yione-persona-bio')||'产品研究与创业交流助手');
   const [demoPost] = useState(readDemoPost);
-  const [taskDraft, setTaskDraft] = useState('帮我整理今天的合作线索，\n把需要我决定的事项单独列出来。');
   const [taskDescription,setTaskDescription]=useState(()=>localStorage.getItem('yione-task-description')||'每天整理新增合作线索，归纳人物的供需方向，并把需要本人判断的事项单独列出。');
   const [descriptionDraft,setDescriptionDraft]=useState(taskDescription);
   const [editingDescription,setEditingDescription]=useState(false);
@@ -81,7 +80,6 @@ export default function StructurePages({page, entry, debug, onHotspot, onLoad}) 
   const Header = ({title}) => <><IOSStatusBar/><header className="structure-header"><B id="back"><I name="back" size={25}/></B><strong>{title}</strong><MiniProgramCapsule/></header></>;
   const Underlay = () => <div className="sheet-underlay" aria-hidden="true"><IOSStatusBar/><header className="sheet-underlay-header"><I name="people"/><b>YIOne</b><span>分身广场</span><MiniProgramCapsule/></header><div className="sheet-underlay-card"><i/><strong>YIOne</strong><span>友联</span></div></div>;
   const TaskCard = ({id, title, meta, body, enabled}) => <B id={id} className="structure-card task-list-card"><div><h2>{title}</h2><p className="muted">{meta}</p><p>{body}</p></div><div className="task-state"><I name="right"/><span>{enabled ? '已开启' : '已关闭'}</span><i className={`switch ${enabled ? 'on' : ''}`}/></div></B>;
-  if (page.id === 'N33') {const create=item=>{if(item?.status!=='confirmed'||!taskDraft.trim())return;writeDemoTask(taskDraft);onHotspot(item);};return <section className="h5-page structure-page create-task-shell"><Header title="林舟"/><main className="create-task-page"><div className="overview-heading"><h1>工作总览</h1><span>今天 · 9月10日</span></div><section className="summary-card"><div><small>正在进行</small><p><strong>2</strong> 项任务</p><span>沟通与资料整理中</span></div><div><p>待你决定 <b className="orange">1</b></p><p>今日完成 <b>2</b></p></div></section><div className="section-heading"><h2>正在进行</h2><span>查看全部</span></div><section className="structure-card small-task"><h2>寻找 3 位生物发酵创业者</h2><p className="muted">已找到 3 位候选人</p><p>正在进一步沟通合作意向</p></section><section className="create-box"><div className="create-box-heading"><I name="check"/><h2>创建任务</h2><B id="collapse">收起</B></div><textarea aria-label="任务内容" value={taskDraft} onChange={event=>setTaskDraft(event.target.value)}/><div><B id="voice" className="voice-input"><I name="mic" size={27}/></B><B id="send" className="coral-button" disabled={!taskDraft.trim()} onClick={create}>发送</B></div></section><BottomTools B={B}/></main></section>;}
   if (page.id === 'N27') {
     const defaults=[['task-1','精灵巡逻','浏览新增人物，整理值得继续关注的供需线索。'],['task-2','合作线索整理','汇总当天交流，并标出需要本人决定的事项。'],['task-3','每周进展回顾','整理本周任务结果和下一步计划。']];
     const saveNewTask=()=>{
@@ -196,7 +194,6 @@ export default function StructurePages({page, entry, debug, onHotspot, onLoad}) 
   return null;
 }
 
-function BottomTools({B}) { return <div className="structure-bottom-tools"><B id="manage"><I name="settings"/>分身管理</B><B id="schedule"><I name="calendar"/>任务管理</B><B id="messages"><I name="bell"/>消息中心</B></div>; }
 function Feed({B,name,job,text,tag,time,id,demo=false,onMore,onOpen,likes,setLikes,comments,image}) { const lines=text.split(/\\n|\n/);const person=demo?'lin':id.replace('post-','');return <article className={`feed-post ${demo?'demo-feed-post':''}`}><div className="feed-person"><B id={`${id}-avatar`} className="feed-avatar-button" context={{person}}><span className="letter-avatar">{name[0]}</span></B><div><h2>{name}</h2><p className="muted">{certificationText(personas[person])}</p></div><B id="more" className="feed-more" onClick={(item,event)=>onMore(id,event)}><MoreDotsIcon/></B></div><B id={id} className="post-text" onClick={()=>onOpen({id,name,job,text,tag,time,image})}>{lines.map((line,i)=><React.Fragment key={i}>{line}{i<lines.length-1&&<br/>}</React.Fragment>)}</B>{tag&&<p className="feed-tags">{tag}</p>}<div className="feed-time"><span className="muted">{time}</span></div><div className="feed-metrics"><button onClick={()=>setLikes(v=>({...v,[id]:!v[id]}))}>{likes[id]?"♥":"♡"} {likes[id]?13:12}</button><button onClick={()=>onOpen({id,name,job,text,tag,time,image})}>评论 {comments[id]?.reduce((total,item)=>total+1+(item.replies?.length||0),0)??(id==='post-zhou'?2:0)}</button><span>浏览 128</span></div></article>; }
 
 function FriendLinksPage({B, owner}) {
