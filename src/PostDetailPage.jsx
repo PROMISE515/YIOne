@@ -1,0 +1,25 @@
+import React,{useEffect,useState} from 'react';
+import {IOSStatusBar,MiniProgramCapsule} from './PhoneChrome.jsx';
+import './post-detail.css';
+
+const commentsKey='yione-post-comments';
+const likesKey='yione-post-likes';
+const fallback={id:'post-zhou',name:'周岚',job:'生物发酵 · 市场拓展',time:'10 分钟前',text:'最近在梳理发酵食品的市场机会。\n想认识做菌种研发、产品转化的朋友，一起聊聊技术走向市场的实际难题。',tag:'#生物发酵 #寻找合作'};
+const seed=[{id:'seed-1',author:'陈序',text:'菌种研发和产品转化可以一起聊聊。',time:'8 分钟前',replies:[{id:'seed-2',author:'周岚',replyTo:'陈序',text:'好呀，你现在主要关注哪类产品？',time:'刚刚'}]}];
+function read(key){try{return JSON.parse(localStorage.getItem(key)||'{}')}catch{return {}}}
+function count(items){return items.reduce((total,item)=>total+1+(item.replies?.length||0),0)}
+export default function PostDetailPage({page,entry,onHotspot,onLoad}){
+ const post=entry?.context?.post||fallback;
+ const [commentsByPost,setCommentsByPost]=useState(()=>read(commentsKey));
+ const [likesByPost,setLikesByPost]=useState(()=>read(likesKey));
+ const [expanded,setExpanded]=useState({});
+ const [target,setTarget]=useState(null);
+ const [draft,setDraft]=useState('');
+ const comments=commentsByPost[post.id]||(post.id==='post-zhou'?seed:[]);
+ useEffect(()=>{onLoad?.()},[onLoad]);
+ useEffect(()=>{localStorage.setItem(commentsKey,JSON.stringify(commentsByPost))},[commentsByPost]);
+ useEffect(()=>{localStorage.setItem(likesKey,JSON.stringify(likesByPost))},[likesByPost]);
+ function submit(event){event.preventDefault();const text=draft.trim();if(!text)return;const item={id:crypto.randomUUID(),author:'林舟',text,time:'刚刚'};setCommentsByPost(current=>{const existing=current[post.id]||(post.id==='post-zhou'?seed:[]);const next=target?existing.map(root=>root.id===target.rootId?{...root,replies:[...(root.replies||[]),{...item,replyTo:target.name}]}:root):[...existing,{...item,replies:[]}];return {...current,[post.id]:next}});if(target)setExpanded(current=>({...current,[target.rootId]:true}));setDraft('');setTarget(null)}
+ const back=page.hotspots.find(item=>item.id==='back');
+ return <section className="h5-page post-detail-page"><IOSStatusBar/><header className="post-detail-header"><button type="button" onClick={()=>onHotspot(back)} aria-label="返回广场动态"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 4-8 8 8 8"/></svg></button><strong>动态详情</strong><MiniProgramCapsule/></header><main className="post-detail-main"><article className="post-detail-article"><div className="post-detail-author"><span className="letter-avatar">{post.name[0]}</span><div><strong>{post.name}</strong><small>{post.job} · {post.time}</small></div></div><p>{post.text.replaceAll('\\n','\n')}</p>{post.tag&&<small className="post-detail-tags">{post.tag}</small>}{post.image==='sample'?<svg className="post-detail-image" viewBox="55 1540 430 470" role="img" aria-label="动态图片"><image href={`${import.meta.env.BASE_URL}prototype/N07-发布动态.png`} width="1206" height="2622"/></svg>:post.image&&typeof post.image==='string'&&<img className="post-detail-image" src={post.image} alt="动态图片"/>}<div className="post-detail-metrics"><button type="button" onClick={()=>setLikesByPost(current=>({...current,[post.id]:!current[post.id]}))}>{likesByPost[post.id]?'♥ 已赞':'♡ 点赞'}</button><span>评论 {count(comments)}</span><span>浏览 128</span></div></article><h2 className="post-detail-comment-title">评论 {count(comments)}</h2><div className="post-detail-comments">{comments.length===0&&<p className="post-comment-empty">还没有评论，说说你的想法吧。</p>}{comments.map(root=><article className="post-comment-thread" key={root.id}><div className="post-comment-root"><span className="letter-avatar">{root.author[0]}</span><div><strong>{root.author}</strong><p>{root.text}</p><small>{root.time||'刚刚'} <button type="button" onClick={()=>setTarget({rootId:root.id,name:root.author})}>回复</button></small></div></div>{(root.replies||[]).length>0&&<div className="post-comment-replies">{!expanded[root.id]?<button type="button" className="post-replies-toggle" onClick={()=>setExpanded(current=>({...current,[root.id]:true}))}>— 展开 {root.replies.length} 条回复</button>:<>{root.replies.map(reply=><div className="post-comment-reply" key={reply.id}><span className="letter-avatar">{reply.author[0]}</span><div><strong>{reply.author} <em>回复 @{reply.replyTo}</em></strong><p>{reply.text}</p><small>{reply.time||'刚刚'} <button type="button" onClick={()=>setTarget({rootId:root.id,name:reply.author})}>回复</button></small></div></div>)}<button type="button" className="post-replies-toggle" onClick={()=>setExpanded(current=>({...current,[root.id]:false}))}>— 收起回复</button></>}</div>}</article>)}</div></main><form className="post-detail-composer" onSubmit={submit}>{target&&<div className="post-reply-target">回复 @{target.name}<button type="button" onClick={()=>setTarget(null)} aria-label="取消回复">×</button></div>}<div><input aria-label={target?`回复${target.name}`:'写评论'} placeholder={target?`回复 @${target.name}…`:'说点什么…'} value={draft} onChange={event=>setDraft(event.target.value)}/><button type="submit" disabled={!draft.trim()}>发送</button></div></form></section>;
+}

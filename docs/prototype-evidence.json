@@ -1,0 +1,197 @@
+[
+  {
+    "id": "N68",
+    "file": "N68-首页.png",
+    "sha256": "8a800d84acd56c858055db49be8fe570d1c11983b8de2f703f4d42788ad8c3d1"
+  },
+  {
+    "id": "N46",
+    "file": "N46-分身广场.png",
+    "sha256": "938c122ee069467f67073b8e077bcdd210a76b782a28fc4ec966d202dadcf20c"
+  },
+  {
+    "id": "N34",
+    "file": "N34-助手工作总览.png",
+    "sha256": "86651444291d74a29879494fbbe2a7f4fced2c19ccaca724d69d3f7123e230c5"
+  },
+  {
+    "id": "N42",
+    "file": "N42-他人主页.png",
+    "sha256": "e08a2d70ea2492dbc7e2cd5985193d7f954565fe8d353ffdcf32ee7d881492a6"
+  },
+  {
+    "id": "N37",
+    "file": "N37-分身交流.png",
+    "sha256": "ea734493d97792da5c66a5bc7181127b09c02aef71e70073a877c5a0c113602e"
+  },
+  {
+    "id": "N53",
+    "file": "N53-找合作.png",
+    "sha256": "69f8d82eeaf9c2cd0d73c5999673dd1bee221fdb53b48bc3a29d922c5bf13b21"
+  },
+  {
+    "id": "N54",
+    "file": "N54-人物更多.png",
+    "sha256": "24fd48b5736c748b60086d832b3f582d4caf3648b0f5710b20f16aa31b009890"
+  },
+  {
+    "id": "N35",
+    "file": "N35-消息待确认.png",
+    "sha256": "b0a7b8e9f430fe7732dd165c71d6a2d43db334b172e5cb4a6fa6036bfedd2b2b"
+  },
+  {
+    "id": "N36",
+    "file": "N36-消息进行中.png",
+    "sha256": "8eb41a34c2ca203d1448ee245316262725ac0ad28501b270eeee1f7624a99a29"
+  },
+  {
+    "id": "N33",
+    "file": "N33-创建任务.png",
+    "sha256": "ac4e082cb110dee62e7f5163ec24a65270b6c227b563f98714893ce929d7a74f"
+  },
+  {
+    "id": "N27",
+    "file": "N27-任务管理.png",
+    "sha256": "233627562ba29815a92913dae084e80f9564dff82ee1b040587d6847ed4c34fc"
+  },
+  {
+    "id": "N28",
+    "file": "N28-任务详情.png",
+    "sha256": "fc889e5e5448c5691b0a321d94d20652ff4ee34d7451fff4d3ddd30ae65e802b"
+  },
+  {
+    "id": "N31",
+    "file": "N31-分身管理知识库.png",
+    "sha256": "d46fcb0a84225f93f87c9a42388eca2442ea6d92ad5f2d04feb524ffd6549de8"
+  },
+  {
+    "id": "N32",
+    "file": "N32-分身管理问答库.png",
+    "sha256": "a49cc98f56036b36d98780716d627af039022bc4ec912ff59f135d596943dca4"
+  },
+  {
+    "id": "N38",
+    "file": "N38-问答调试.png",
+    "sha256": "e353d627e7a7f35e29b3cb17178cfa726fc5e44ce888916564d52692dcf01059"
+  },
+  {
+    "id": "N56",
+    "file": "N56-目前合作.png",
+    "sha256": "d59c53b0b9c458990ab136b812f44ee0b8df69f50b2f23b7140727104f05dbe1"
+  },
+  {
+    "id": "N41",
+    "file": "N41-举报.png",
+    "sha256": "5c5e63dee44f92595a9a411c1c8d6ff6bcf7aa2a08ce720a2466f343384bbf44"
+  },
+  {
+    "id": "N50",
+    "file": "N50-广场动态.png",
+    "sha256": "096333a6f181740ea929c86f6b757d7267d01da1f90d8bbb299c62a022fe0af9"
+  },
+  {
+    "id": "N18",
+    "file": "N18-侧边栏.png",
+    "sha256": "f42b74f090a7102533a3308b959b120553235c449c2ba247d018ea124d5aa982"
+  },
+  {
+    "id": "N01",
+    "file": "N01-个人主页.png",
+    "sha256": "1287529eb4271819362fc491503760d2badc2231e14104ae11095ef0df3f8fc5"
+  },
+  {
+    "id": "N05",
+    "file": "N05-分享中心.png",
+    "sha256": "dcc2e43f4afa0b4cd642286e76bef8a837ebf478595e771371fcf892f99f8d8d"
+  },
+  {
+    "id": "N12",
+    "file": "N12-设置.png",
+    "sha256": "780f9bc2b4f5476970fd665ea493a5fe1efc11b29f7cd9d8266f91434af7fc18"
+  },
+  {
+    "id": "N02",
+    "file": "N02-个人动态.png",
+    "sha256": "9bcfe8261d37ddcb1ca9650b977bba975825e4c3e7140bc3b525a9661144c7cd"
+  },
+  {
+    "id": "N14",
+    "file": "N14-账号与安全.png",
+    "sha256": "d5d60fa4025a17595470bb410cd7d4b338e55f31d64ff7490cd06d76d12fe74a"
+  },
+  {
+    "id": "N17",
+    "file": "N17-隐私设置.png",
+    "sha256": "9e82dc618e80f1ac24b9fca7bd569aca183de0d59dd78496f3ba46b672602a8c"
+  },
+  {
+    "id": "N16",
+    "file": "N16-通知设置.png",
+    "sha256": "7d99d816460dbad0071233762c26ff3013e463c45462cd2add6b1a11215ffc7f"
+  },
+  {
+    "id": "N22",
+    "file": "N22-页面设置.png",
+    "sha256": "9573f9f9d21a8fc04d2eeb3b706da153edfa5bd2a076f86b2101444517a6b339"
+  },
+  {
+    "id": "N04",
+    "file": "N04-关于YIOne.png",
+    "sha256": "aed46ed050ded9cd862d8debce9804405d2f9ad8a5772ef1e5542f9ee0f6bf40"
+  },
+  {
+    "id": "N06",
+    "file": "N06-反馈.png",
+    "sha256": "8ef76393def22f86a5d7793dc879e349989986a71413f50c13b2c9593231d113"
+  },
+  {
+    "id": "N13",
+    "file": "N13-设置密码.png",
+    "sha256": "d2ae766ffc557d395ed58a2149aa816e1cb24ab6203379ba65a3c63e75b5399c"
+  },
+  {
+    "id": "N08",
+    "file": "N08-实名认证.png",
+    "sha256": "edd6406f8bd4f90c20830da922a65c36dcffc429f3eed8c1d6e871c17e2d0fac"
+  },
+  {
+    "id": "N11",
+    "file": "N11-认证申请.png",
+    "sha256": "f60f225fa5fa68c68b3c43e5f38ae836708f19e19579a22ce27fa26a06e38e82"
+  },
+  {
+    "id": "N09",
+    "file": "N09-注销账号.png",
+    "sha256": "1cca226dbc3e80dd4b7c9761ace2ca1025fe71498b96e68a7ce9c6f4edc263cd"
+  },
+  {
+    "id": "N51",
+    "file": "N51-打电话隐藏文字.png",
+    "sha256": "bc873c2f310399a843c2a32c2e2ccd9e265f744fcd0044a590067164ff2d8cc3"
+  },
+  {
+    "id": "N52",
+    "file": "N52-打电话.png",
+    "sha256": "36a9b6a4a3dd74e7cf3a98536dab07d9657fec0912c69a4fddded7ce4d1b0bf2"
+  },
+  {
+    "id": "N47",
+    "file": "N47-创建群聊.png",
+    "sha256": "0a527fcee2823336a8eb39f73c222360340fd56653bd35a5ef327ed42e2645a9"
+  },
+  {
+    "id": "N07",
+    "file": "N07-发布动态.png",
+    "sha256": "b2cb166353127bee207f2b6f07b8bb0c6440319c86543b3ebcac777ca871ff66"
+  },
+  {
+    "id": "N15",
+    "file": "N15-离开动态编辑.png",
+    "sha256": "b80e2134b6a95544ab2f951c225d5b029b8363d64287dbdf20fbcd2f95f86f62"
+  },
+  {
+    "id": "N19",
+    "file": "N19-动态可见性.png",
+    "sha256": "aee403fc49eff73e3b0ff5867fef6ead02905faf90276dbcfa8156dc3281ea52"
+  }
+]

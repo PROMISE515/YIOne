@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YIOne screenshot prototype v2",
+  "type": "object",
+  "required": [
+    "version",
+    "startPage",
+    "pages"
+  ],
+  "properties": {
+    "version": {
+      "const": 2
+    },
+    "startPage": {
+      "type": "string"
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "image",
+          "width",
+          "height",
+          "hotspots",
+          "context",
+          "notes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "home",
+              "plaza",
+              "assistant",
+              "persona",
+              "task",
+              "external",
+              "system"
+            ]
+          },
+          "image": {
+            "type": "string",
+            "pattern": "^/prototype/.*\\.png$"
+          },
+          "width": {
+            "const": 1206
+          },
+          "height": {
+            "const": 2622
+          },
+          "context": {
+            "type": "object"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "back": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "hotspots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "label",
+                "x",
+                "y",
+                "width",
+                "height",
+                "action",
+                "target",
+                "status",
+                "reason"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "x": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "width": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "height": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "action": {
+                  "enum": [
+                    "navigate",
+                    "back"
+                  ]
+                },
+                "target": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "confirmed",
+                    "pending"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

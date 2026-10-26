@@ -1,0 +1,13 @@
+node_modules/
+dist/
+data/
+server/
+src/ProductApp.jsx
+src/product.css
+src/product-extra.css
+docs/architecture.md
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
