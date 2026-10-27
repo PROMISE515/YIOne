@@ -14,9 +14,13 @@ export default function FirstVisitGuide({onComplete}) {
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     if (reduced) { setStage('focus'); return; }
     const travelTimer = window.setTimeout(() => setStage('travel'), 1050);
-    const focusTimer = window.setTimeout(() => setStage('focus'), 2850);
-    return () => { window.clearTimeout(travelTimer); window.clearTimeout(focusTimer); };
+    return () => window.clearTimeout(travelTimer);
   }, []);
+  useEffect(() => {
+    if (stage !== 'travel') return;
+    const fallbackTimer = window.setTimeout(() => setStage('focus'), 1900);
+    return () => window.clearTimeout(fallbackTimer);
+  }, [stage]);
   useEffect(() => { if (stage === 'focus') upload.current?.focus(); }, [stage]);
 
   const chooseAvatar = async event => {
@@ -37,7 +41,9 @@ export default function FirstVisitGuide({onComplete}) {
 
   return <div className={`first-visit-guide ${stage}`} role="dialog" aria-modal="true" aria-label="首次进入引导">
     {stage !== 'focus' ? <>
-      <div className="first-visit-travel-orb" aria-hidden="true">✦</div>
+      <div className="first-visit-travel-orb" aria-hidden="true" onTransitionEnd={event => {
+        if (event.target === event.currentTarget && event.propertyName === 'top') setStage('focus');
+      }}>✦</div>
       <div className="first-visit-intro-copy" aria-live="polite"><strong>你的分身已创建好</strong><span>接下来认识你的悬浮球</span></div>
     </> : <>
       <div className="first-visit-spotlight" aria-hidden="true"><PersonaAvatar size={56}/></div>
