@@ -1,8 +1,9 @@
-import React, {forwardRef} from 'react';
+import React, {forwardRef, useSyncExternalStore} from 'react';
 import './phone-chrome.css';
+import {readAvatar, subscribeAvatar} from './avatarStore.js';
 
-export const PhoneShell = forwardRef(function PhoneShell({children, onScroll, shortcut}, ref) {
-  return <div className="phone-shell"><div className="phone-scroll" ref={ref} onScroll={onScroll}>{children}</div>{shortcut&&<button type="button" className="global-workbench-entry" aria-label="进入工作台" onClick={shortcut}><PersonaAvatar size={48}/></button>}</div>;
+export const PhoneShell = forwardRef(function PhoneShell({children, onScroll, shortcut, overlay}, ref) {
+  return <div className="phone-shell"><div className="phone-scroll" ref={ref} onScroll={onScroll}>{children}</div>{shortcut&&<button type="button" className="global-workbench-entry" aria-label="进入工作台" onClick={shortcut}><PersonaAvatar size={48}/></button>}{overlay}</div>;
 });
 
 export function IOSStatusBar() {
@@ -14,7 +15,8 @@ export function MiniProgramCapsule() {
 }
 
 export function PersonaAvatar({size=32}) {
-  return <img className="persona-avatar" src={`${import.meta.env.BASE_URL}assets/patrick-avatar.jpg`} width={size} height={size} alt="" aria-hidden="true"/>;
+  const uploaded = useSyncExternalStore(subscribeAvatar, readAvatar, () => '');
+  return <img className="persona-avatar" src={uploaded || `${import.meta.env.BASE_URL}assets/patrick-avatar.jpg`} width={size} height={size} alt="" aria-hidden="true"/>;
 }
 
 export function MoreDotsIcon({size=22}) {
