@@ -9,9 +9,10 @@ const questions = [
   '对了，我应该怎么称呼您？',
 ];
 const mascot = `${import.meta.env.BASE_URL}assets/yione-gecko-explorer.png`;
+const peekingMascot = `${import.meta.env.BASE_URL}assets/yione-gecko-peek.png`;
 
-function Gecko({className = ''}) {
-  return <img className={`entry-gecko ${className}`} src={mascot} alt="YIOne 小蜥蜴"/>;
+function Gecko({className = '', pose = 'standing'}) {
+  return <img className={`entry-gecko ${className}`} src={pose === 'peeking' ? peekingMascot : mascot} alt="YIOne 小蜥蜴"/>;
 }
 
 function Icon({name}) {
@@ -77,8 +78,11 @@ function Collection({onComplete}) {
   const [file, setFile] = useState('');
   const [error, setError] = useState('');
   const fileInput = useRef(null);
+  const chat = useRef(null);
   const index = answers.length;
   const complete = index >= questions.length;
+
+  useEffect(() => { if (chat.current) chat.current.scrollTop = chat.current.scrollHeight; }, [index]);
 
   const addAnswer = (value, source) => {
     if (!value.trim() && !file) { setError('请先输入回答'); return; }
@@ -94,8 +98,8 @@ function Collection({onComplete}) {
 
   return <section className="entry-screen entry-collection" aria-label="信息采集页">
     <IOSStatusBar/>
-    <div className="entry-collection-top"><Gecko/><div><span>YIOne</span><small>{complete ? '信息收集完成' : `认识你 · ${index + 1}/${questions.length}`}</small></div></div>
-    <div className="entry-collection-chat" aria-live="polite">
+    <div className="entry-collection-top"><Gecko pose="peeking"/><div><span>YIOne</span><small>{complete ? '信息收集完成' : `认识你 · ${index + 1}/${questions.length}`}</small></div></div>
+    <div className="entry-collection-chat" ref={chat} aria-live="polite">
       <div className="entry-chat-bubble entry-assistant">请回答：您是谁？需要什么？能提供什么？</div>
       {answers.map((answer, number) => <React.Fragment key={number}>
         <div className="entry-chat-bubble entry-assistant">{questions[number]}</div>
@@ -106,7 +110,7 @@ function Collection({onComplete}) {
     </div>
     {complete ? <footer className="entry-collection-footer"><button className="entry-journey" type="button" onClick={() => onComplete(answers)}>开启旅程 · 与YIOne链接</button></footer> : mode === 'voice' ? <footer className="entry-collection-footer">
       <div className="entry-voice-summary"><span className={voiceActive && !muted ? 'entry-live-dot' : ''}/>{muted ? '麦克风已关闭' : voiceActive ? '正在记录 · 语音交互演示' : '语音已暂停'}</div>
-      <div className="entry-voice-controls"><button className="entry-voice-bar" type="button" disabled={muted} onClick={() => setVoiceActive(current => !current)}>{muted ? '打开麦克风后继续' : voiceActive ? '直接说，YIOne 正在记录' : '点击继续说话'}</button><button className="entry-icon-button" type="button" aria-label={muted ? '打开麦克风' : '关闭麦克风'} onClick={() => setMuted(current => !current)}><Icon name={muted ? 'mute' : 'mic'}/></button><button className="entry-icon-button" type="button" aria-label="切换到打字" onClick={() => {setMode('text');setError('')}}><Icon name="close"/></button></div>
+      <div className="entry-voice-controls"><button className={`entry-voice-bar ${voiceActive && !muted ? 'is-active' : 'is-idle'}`} type="button" disabled={muted} onClick={() => setVoiceActive(current => !current)}><span className="entry-voice-light entry-voice-light-a" aria-hidden="true"/><span className="entry-voice-light entry-voice-light-b" aria-hidden="true"/><span className="entry-voice-light entry-voice-light-c" aria-hidden="true"/><span className="entry-voice-label">{muted ? '打开麦克风后继续' : voiceActive ? '直接说，YIOne 正在记录' : '点击继续说话'}</span></button><button className="entry-icon-button" type="button" aria-label={muted ? '打开麦克风' : '关闭麦克风'} onClick={() => setMuted(current => !current)}><Icon name={muted ? 'mute' : 'mic'}/></button><button className="entry-icon-button" type="button" aria-label="切换到打字" onClick={() => {setMode('text');setError('')}}><Icon name="close"/></button></div>
       <button className="entry-voice-next" type="button" disabled={muted || !voiceActive} onClick={finishVoice}>完成本题</button>
       <small className="entry-voice-note">语音仅演示状态，不会录音或保存声音。切换打字可保存文字回答。</small>
     </footer> : <footer className="entry-collection-footer">
