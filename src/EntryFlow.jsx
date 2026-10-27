@@ -8,7 +8,7 @@ const questions = [
   '您能提供什么？',
   '对了，我应该怎么称呼您？',
 ];
-const mascot = `${import.meta.env.BASE_URL}assets/yione-gecko.png`;
+const mascot = `${import.meta.env.BASE_URL}assets/yione-gecko-explorer.png`;
 
 function Gecko({className = ''}) {
   return <img className={`entry-gecko ${className}`} src={mascot} alt="YIOne 小蜥蜴"/>;
