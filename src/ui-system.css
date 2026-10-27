@@ -513,6 +513,7 @@ body {
   background: var(--yi-color-surface);
   color: var(--yi-color-text-secondary);
 }
+.toolbar button:disabled { opacity: .45; cursor:default; }
 
 @media (max-width: 430px) {
   :root { --yi-page-gutter: 20px; }

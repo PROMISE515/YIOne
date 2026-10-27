@@ -42,9 +42,8 @@ function Splash({onNext}) {
   </section>;
 }
 
-function Register({onNext}) {
-  const [phone, setPhone] = useState('');
-  const [code, setCode] = useState('');
+function Register({onNext, draft, onDraftChange}) {
+  const {phone, code} = draft;
   const [showCode, setShowCode] = useState(false);
   const [error, setError] = useState('');
   const continueToSetup = event => {
@@ -59,8 +58,8 @@ function Register({onNext}) {
     <form className="entry-register-form" onSubmit={continueToSetup}>
       <h1>注册 YIOne</h1>
       <p>先认识你，再帮你找到合适的连接。</p>
-      <label>手机号<input type="tel" inputMode="numeric" autoComplete="tel" maxLength={11} placeholder="请输入手机号" value={phone} onChange={event => {setPhone(event.target.value.replace(/\D/g, ''));setError('')}}/></label>
-      <label>验证码<div className="entry-code-row"><input type="text" inputMode="numeric" maxLength={6} placeholder="输入验证码" value={code} onChange={event => {setCode(event.target.value.replace(/\D/g, ''));setError('')}}/><button type="button" onClick={() => setShowCode(true)}>获取验证码</button></div></label>
+      <label>手机号<input type="tel" inputMode="numeric" autoComplete="tel" maxLength={11} placeholder="请输入手机号" value={phone} onChange={event => {onDraftChange({...draft,phone:event.target.value.replace(/\D/g, '')});setError('')}}/></label>
+      <label>验证码<div className="entry-code-row"><input type="text" inputMode="numeric" maxLength={6} placeholder="输入验证码" value={code} onChange={event => {onDraftChange({...draft,code:event.target.value.replace(/\D/g, '')});setError('')}}/><button type="button" onClick={() => setShowCode(true)}>获取验证码</button></div></label>
       {showCode && <small className="entry-demo-code">演示验证码：123456（不会发送短信）</small>}
       {error && <small className="entry-error" role="alert">{error}</small>}
       <button className="entry-primary" type="submit">继续</button>
@@ -69,8 +68,8 @@ function Register({onNext}) {
   </section>;
 }
 
-function Collection({onComplete}) {
-  const [answers, setAnswers] = useState([]);
+function Collection({onComplete, initialAnswers = []}) {
+  const [answers, setAnswers] = useState(() => initialAnswers);
   const [mode, setMode] = useState('voice');
   const [muted, setMuted] = useState(false);
   const [voiceActive, setVoiceActive] = useState(true);
@@ -123,9 +122,9 @@ function Collection({onComplete}) {
   </section>;
 }
 
-export default function EntryFlow({step, onStep, onComplete}) {
+export default function EntryFlow({step, onStep, onComplete, initialAnswers, registerDraft, onRegisterDraftChange}) {
   const onRegister = () => onStep('register');
   if (step === 'welcome') return <Splash onNext={onRegister}/>;
-  if (step === 'register') return <Register onNext={() => onStep('setup')}/>;
-  return <Collection onComplete={onComplete}/>;
+  if (step === 'register') return <Register onNext={() => onStep('setup')} draft={registerDraft} onDraftChange={onRegisterDraftChange}/>;
+  return <Collection onComplete={onComplete} initialAnswers={initialAnswers}/>;
 }
