@@ -3,7 +3,7 @@ import './phone-chrome.css';
 import {readAvatar, subscribeAvatar} from './avatarStore.js';
 
 export const PhoneShell = forwardRef(function PhoneShell({children, onScroll, shortcut, overlay}, ref) {
-  return <div className="phone-shell"><div className="phone-scroll" ref={ref} onScroll={onScroll}>{children}</div>{shortcut&&<button type="button" className="global-workbench-entry" aria-label="进入工作台" onClick={shortcut}><PersonaAvatar size={48}/></button>}{overlay}</div>;
+  return <div className={`phone-shell${overlay ? ' guide-active' : ''}`}><div className="phone-scroll" ref={ref} onScroll={onScroll}>{children}</div>{shortcut&&<button type="button" className="global-workbench-entry" aria-label="进入工作台" onClick={shortcut}><PersonaAvatar size={48}/></button>}{overlay}</div>;
 });
 
 export function IOSStatusBar() {

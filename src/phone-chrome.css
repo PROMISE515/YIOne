@@ -5,3 +5,4 @@
 .phone-scroll .avatar-entry{display:none!important}
 .global-workbench-entry{position:absolute;z-index:12;right:16px;bottom:138px;display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid var(--yi-color-border);border-radius:50%;background:var(--yi-color-surface);box-shadow:0 2px 9px rgb(0 0 0 / 8%);cursor:pointer;overflow:hidden}
 .global-workbench-entry .persona-avatar{width:100%;height:100%}
+.phone-shell.guide-active .global-workbench-entry{opacity:0}
