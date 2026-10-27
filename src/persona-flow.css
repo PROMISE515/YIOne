@@ -7,6 +7,9 @@
 .persona-profile-content .persona-profile-identity>span{width:72px;height:72px;font-size:34px;flex:none}
 .persona-profile-content .persona-profile-identity h1{font-size:29px;margin:0 0 7px}
 .persona-profile-content .persona-profile-identity p{margin:0;color:#bd5a25;font-size:15px}
+.persona-profile-friend-links{display:flex!important;align-items:center;gap:8px;width:100%;margin-top:20px;padding:14px 15px!important;border:1px solid #e9dfd5!important;border-radius:16px!important;background:#fff!important;color:#242424!important;text-align:left!important;font-size:15px!important}
+.persona-profile-friend-links span{flex:1}
+.persona-profile-friend-links svg:last-child{color:#9c948c}
 .persona-profile-content .persona-profile-bio{margin:24px 0 20px}
 .persona-profile-content .persona-profile-bio p{font-size:17px;line-height:1.65;margin:0 0 8px}
 .persona-profile-content .persona-profile-bio p+p{color:#746e67}

@@ -5,9 +5,9 @@ const DEFAULT_LINKS = ['zhou', 'chen', 'xu'];
 export function readFriendLinks(owner) {
   try {
     const saved = JSON.parse(localStorage.getItem(LINKS_KEY) || '{}');
-    return Array.isArray(saved[owner]) ? saved[owner] : [...DEFAULT_LINKS];
+    return Array.isArray(saved[owner]) ? saved[owner].filter(id => id !== owner) : DEFAULT_LINKS.filter(id => id !== owner);
   } catch {
-    return [...DEFAULT_LINKS];
+    return DEFAULT_LINKS.filter(id => id !== owner);
   }
 }
 

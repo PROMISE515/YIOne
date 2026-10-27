@@ -4092,6 +4092,19 @@
       },
       "hotspots": [
         {
+          "id": "cooperation",
+          "label": "查看当前人物的友联",
+          "x": 820,
+          "y": 820,
+          "width": 300,
+          "height": 130,
+          "action": "navigate",
+          "target": "N56",
+          "status": "confirmed",
+          "reason": "",
+          "evidence": "产品负责人明确：从他人主页进入此人的友联"
+        },
+        {
           "id": "follow",
           "label": "关注或取消关注",
           "x": 70,
@@ -4270,10 +4283,10 @@
           "width": 160,
           "height": 100,
           "action": "navigate",
-          "target": null,
-          "status": "pending",
-          "reason": "该人物对话中的具体业务动作仍待确认",
-          "evidence": "标准对话页统一交互"
+          "target": "N56",
+          "status": "confirmed",
+          "reason": "",
+          "evidence": "产品负责人明确：聊天人物卡友联进入当前人物的友联列表"
         },
         {
           "id": "follow",
